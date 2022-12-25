@@ -1,6 +1,6 @@
 let cancelId
 let startTime
-const countdown = 25 * 60 * 1000
+const countdown = 65 * 1000
 
 const millisTimer = document.querySelector(".timer__milliseconds")
 const secondsTimer = document.querySelector(".timer__seconds")
@@ -26,8 +26,18 @@ function updateTimer() {
   let minutesLeft = secondsLeft / 60
 
   let millisText = millisLeft % 1000
-  let secondsText = Math.round(secondsLeft) % 60
-  let minutesText = Math.round(minutesLeft)
+  let secondsText = Math.floor(secondsLeft) % 60
+  let minutesText = Math.floor(minutesLeft)
+
+  if (millisText.toString().length < 3) {
+    millisText = millisText.toString().padStart(3, "0")
+  }
+  if (secondsText.toString().length < 2) {
+    secondsText = secondsText.toString().padStart(2, "0")
+  }
+  if (minutesText.toString().length < 2) {
+    minutesText = minutesText.toString().padStart(2, "0")
+  }
 
   millisTimer.innerHTML = millisText
   secondsTimer.innerHTML = secondsText
