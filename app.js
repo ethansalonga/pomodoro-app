@@ -22,10 +22,16 @@ function resetTimer() {
 function updateTimer() {
   let millisElapsed = Date.now() - startTime
   let millisLeft = countdown - millisElapsed
+  let secondsLeft = millisLeft / 1000
+  let minutesLeft = secondsLeft / 60
 
   let millisText = millisLeft % 1000
+  let secondsText = Math.round(secondsLeft) % 60
+  let minutesText = Math.round(minutesLeft)
 
   millisTimer.innerHTML = millisText
+  secondsTimer.innerHTML = secondsText
+  minutesTimer.innerHTML = minutesText
 
   cancelId = requestAnimationFrame(updateTimer)
 }
