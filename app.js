@@ -42,6 +42,7 @@ function updateTimer() {
   let millisLeft = countdown - millisElapsed
   if (millisLeft < 0) {
     millisLeft = 0
+    cancelAnimationFrame(cancelId)
     cancelId = null
   }
   let secondsLeft = millisLeft / 1000
