@@ -16,7 +16,9 @@ function stopTimer() {
 }
 
 function resetTimer() {
-
+  millisTimer.innerHTML = "000"
+  secondsTimer.innerHTML = "05"
+  minutesTimer.innerHTML = "01"
 }
 
 function updateTimer() {
