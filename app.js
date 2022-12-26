@@ -1,5 +1,6 @@
 let cancelId
 let startTime
+let savedTime = 0
 const countdown = 65 * 1000
 
 const millisTimer = document.querySelector(".timer__milliseconds")
@@ -12,17 +13,21 @@ function startTimer() {
 }
 
 function stopTimer() {
+  savedTime += (Date.now() - startTime)
   cancelAnimationFrame(cancelId)
 }
 
 function resetTimer() {
+  startTime = Date.now()
+  savedTime = 0
+
   millisTimer.innerHTML = "000"
   secondsTimer.innerHTML = "05"
   minutesTimer.innerHTML = "01"
 }
 
 function updateTimer() {
-  let millisElapsed = Date.now() - startTime
+  let millisElapsed = savedTime + (Date.now() - startTime)
   let millisLeft = countdown - millisElapsed
   let secondsLeft = millisLeft / 1000
   let minutesLeft = secondsLeft / 60
