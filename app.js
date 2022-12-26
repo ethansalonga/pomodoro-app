@@ -1,20 +1,31 @@
+const millisTimer = document.querySelector(".timer__milliseconds")
+const secondsTimer = document.querySelector(".timer__seconds")
+const minutesTimer = document.querySelector(".timer__minutes")
+const startButton = document.querySelector(".stopwatch__start")
+const stopButton = document.querySelector(".stopwatch__stop")
+const resetButton = document.querySelector(".stopwatch__reset")
+
 let cancelId
 let startTime
 let savedTime = 0
 const countdown = 25 * 60 * 1000
 
-const millisTimer = document.querySelector(".timer__milliseconds")
-const secondsTimer = document.querySelector(".timer__seconds")
-const minutesTimer = document.querySelector(".timer__minutes")
-
 function startTimer() {
   startTime = Date.now()
   cancelId = requestAnimationFrame(updateTimer)
+
+  startButton.disabled = true
+  stopButton.disabled = false
+  resetButton.disabled = false
 }
 
 function stopTimer() {
   savedTime += (Date.now() - startTime)
   cancelAnimationFrame(cancelId)
+
+  startButton.disabled = false
+  stopButton.disabled = true
+  resetButton.disabled = false
 }
 
 function resetTimer() {
