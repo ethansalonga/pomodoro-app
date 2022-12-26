@@ -1,7 +1,7 @@
 let cancelId
 let startTime
 let savedTime = 0
-const countdown = 65 * 1000
+const countdown = 25 * 60 * 1000
 
 const millisTimer = document.querySelector(".timer__milliseconds")
 const secondsTimer = document.querySelector(".timer__seconds")
@@ -22,8 +22,8 @@ function resetTimer() {
   savedTime = 0
 
   millisTimer.innerHTML = "000"
-  secondsTimer.innerHTML = "05"
-  minutesTimer.innerHTML = "01"
+  secondsTimer.innerHTML = "00"
+  minutesTimer.innerHTML = "25"
 }
 
 function updateTimer() {
